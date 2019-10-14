@@ -19,7 +19,33 @@ class ViewController: UIViewController {
         var pins = [MKPointAnnotation]()
         let geocoder = CLGeocoder()
         //인자 2개 받음. 2번째거는 함수로 받음.
-        geocoder.geocodeAddressString(addr, completionHandler: {
+//        geocoder.geocodeAddressString(addr, completionHandler: {
+//            (placemarks:[CLPlacemark]?, error : Error?) in
+//            if error != nil{
+//                print(error!)
+//            }
+//            // optional binding check
+//            if let myPlacemarks = placemarks {
+//                let myPlacemark = myPlacemarks.first
+//                print(myPlacemark?.country)
+//                print(myPlacemark?.location?.coordinate.latitude)
+//
+//                //핀 꼽기
+//                let pin = MKPointAnnotation()
+//                pin.coordinate = (myPlacemark?.location!.coordinate)!
+//                pin.title = "동의과학대학교"
+//                pin.subtitle = "우리들의 꿈이 자라는 곳!"
+//                pins.append(pin)
+//                self.mapView.showAnnotations(pins, animated: true)
+//
+//            } else {
+//                print("nil 발생")
+//            }
+//
+//        })
+        
+        //후행 클로저(trailing closure)
+        geocoder.geocodeAddressString(addr) {
             (placemarks:[CLPlacemark]?, error : Error?) in
             if error != nil{
                 print(error!)
@@ -28,7 +54,7 @@ class ViewController: UIViewController {
             if let myPlacemarks = placemarks {
                 let myPlacemark = myPlacemarks.first
                 print(myPlacemark?.country)
-                print(myPlacemark?.location?.coordinate.latitude)
+                print(myPlacemark?.location?.coordinate)
                 
                 //핀 꼽기
                 let pin = MKPointAnnotation()
@@ -42,9 +68,7 @@ class ViewController: UIViewController {
                 print("nil 발생")
             }
             
-        })
+        }
     }
-
-
 }
 
