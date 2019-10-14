@@ -36,7 +36,7 @@ class ViewController: UIViewController {
 //                pin.title = "동의과학대학교"
 //                pin.subtitle = "우리들의 꿈이 자라는 곳!"
 //                pins.append(pin)
-//                self.mapView.showAnnotations(pins, animated: true)
+//               self.mapView.showAnnotations(pins, animated: true)
 //
 //            } else {
 //                print("nil 발생")
@@ -44,9 +44,14 @@ class ViewController: UIViewController {
 //
 //        })
         
-        //후행 클로저(trailing closure)
+        //후행 클로저(trailing closure
+        //geocoder.geocodeAddressString(addr) {
+        //    (placemarks:[CLPlacemark]?, error : Error?) in
+        //    if error != nil{
+        //        print(error!)
+        //    }
         geocoder.geocodeAddressString(addr) {
-            (placemarks:[CLPlacemark]?, error : Error?) in
+            placemarks, error in
             if error != nil{
                 print(error!)
             }
